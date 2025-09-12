@@ -1,0 +1,67 @@
+# Transfa App SwiftLint Configuration
+#
+# This file defines the code style rules enforced by SwiftLint. Adhering to these rules
+# ensures code consistency, readability, and quality across the entire iOS project.
+# The configuration is the single source of truth for our style guide.
+
+# Rules that are disabled. We disable line_length because modern screens are wide,
+# and overly strict line lengths can sometimes harm readability.
+disabled_rules:
+  - line_length
+  - trailing_whitespace
+  - identifier_name
+  - multiple_closures_with_trailing_closure
+
+# Rules that are enabled in addition to the defaults. These help enforce
+# modern Swift conventions and catch common issues.
+opt_in_rules:
+  - empty_count
+  - explicit_init
+  - fatal_error_message
+  - force_unwrapping
+  - operator_usage_whitespace
+  - overridden_super_call
+  - private_outlet
+  - prohibited_super_call
+  - redundant_nil_coalescing
+  - vertical_whitespace_closing_braces
+  - yoda_condition
+  - unowned_variable_capture
+  - first_where
+  - explicit_type_interface
+
+# Paths to ignore during linting.
+excluded:
+  - Pods
+  - vendor
+  - Carthage
+
+# Rule-specific configurations.
+
+# Set the threshold for the number of lines in a file.
+file_length:
+  warning: 500
+  error: 800
+
+# Set the threshold for the number of lines in a function body.
+function_body_length:
+  warning: 50
+  error: 100
+
+# Set the threshold for cyclomatic complexity.
+cyclomatic_complexity:
+  warning: 15
+  error: 25
+
+# Enforce Swift's convention of using `?.` instead of `!` for force unwrapping.
+force_cast: warning
+force_try: warning
+force_unwrapping: error
+
+# Define custom rules.
+custom_rules:
+  no_print:
+    name: "No Print Statements"
+    message: "Use a logging framework instead of `print()`."
+    regex: "(\\bprint\\()"
+    severity: warning
